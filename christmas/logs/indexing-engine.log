@@ -2120,3 +2120,1037 @@ Traceback (most recent call last):
   File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 392, in exception_type
     raise BadRequestError(
 litellm.exceptions.BadRequestError: litellm.BadRequestError: OpenAIException - Invalid parameter: 'response_format' of type 'json_schema' is not supported with this model. Learn more about supported models at the Structured Outputs guide: https://platform.openai.com/docs/guides/structured-outputs
+2025-10-17 06:02:55.0336 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=9, delay=512.0, max_retries=10, exception=litellm.BadRequestError: OpenAIException - Invalid parameter: 'response_format' of type 'json_schema' is not supported with this model. Learn more about supported models at the Structured Outputs guide: https://platform.openai.com/docs/guides/structured-outputs
+Traceback (most recent call last):
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 823, in acompletion
+    headers, response = await self.make_openai_chat_completion_request(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/logging_utils.py", line 190, in async_wrapper
+    result = await func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 454, in make_openai_chat_completion_request
+    raise e
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 436, in make_openai_chat_completion_request
+    await openai_aclient.chat.completions.with_raw_response.create(
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/openai/_legacy_response.py", line 381, in wrapped
+    return cast(LegacyAPIResponse[R], await func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/openai/resources/chat/completions/completions.py", line 2603, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1794, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1594, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': "Invalid parameter: 'response_format' of type 'json_schema' is not supported with this model. Learn more about supported models at the Structured Outputs guide: https://platform.openai.com/docs/guides/structured-outputs", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/litellm/main.py", line 584, in acompletion
+    response = await init_response
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 870, in acompletion
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Error code: 400 - {'error': {'message': "Invalid parameter: 'response_format' of type 'json_schema' is not supported with this model. Learn more about supported models at the Structured Outputs guide: https://platform.openai.com/docs/guides/structured-outputs", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 71, in aretry
+    return await func(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/chat_model.py", line 109, in _base_acompletion
+    return await acompletion(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1628, in wrapper_async
+    raise e
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1474, in wrapper_async
+    result = await original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/litellm/main.py", line 603, in acompletion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2273, in exception_type
+    raise e
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 392, in exception_type
+    raise BadRequestError(
+litellm.exceptions.BadRequestError: litellm.BadRequestError: OpenAIException - Invalid parameter: 'response_format' of type 'json_schema' is not supported with this model. Learn more about supported models at the Structured Outputs guide: https://platform.openai.com/docs/guides/structured-outputs
+2025-10-17 06:02:56.0253 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=9, delay=512.0, max_retries=10, exception=litellm.BadRequestError: OpenAIException - Invalid parameter: 'response_format' of type 'json_schema' is not supported with this model. Learn more about supported models at the Structured Outputs guide: https://platform.openai.com/docs/guides/structured-outputs
+Traceback (most recent call last):
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 823, in acompletion
+    headers, response = await self.make_openai_chat_completion_request(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/logging_utils.py", line 190, in async_wrapper
+    result = await func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 454, in make_openai_chat_completion_request
+    raise e
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 436, in make_openai_chat_completion_request
+    await openai_aclient.chat.completions.with_raw_response.create(
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/openai/_legacy_response.py", line 381, in wrapped
+    return cast(LegacyAPIResponse[R], await func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/openai/resources/chat/completions/completions.py", line 2603, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1794, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1594, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': "Invalid parameter: 'response_format' of type 'json_schema' is not supported with this model. Learn more about supported models at the Structured Outputs guide: https://platform.openai.com/docs/guides/structured-outputs", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/litellm/main.py", line 584, in acompletion
+    response = await init_response
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 870, in acompletion
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Error code: 400 - {'error': {'message': "Invalid parameter: 'response_format' of type 'json_schema' is not supported with this model. Learn more about supported models at the Structured Outputs guide: https://platform.openai.com/docs/guides/structured-outputs", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 71, in aretry
+    return await func(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/chat_model.py", line 109, in _base_acompletion
+    return await acompletion(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1628, in wrapper_async
+    raise e
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1474, in wrapper_async
+    result = await original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/litellm/main.py", line 603, in acompletion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2273, in exception_type
+    raise e
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 392, in exception_type
+    raise BadRequestError(
+litellm.exceptions.BadRequestError: litellm.BadRequestError: OpenAIException - Invalid parameter: 'response_format' of type 'json_schema' is not supported with this model. Learn more about supported models at the Structured Outputs guide: https://platform.openai.com/docs/guides/structured-outputs
+2025-10-17 06:02:57.0014 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=9, delay=512.0, max_retries=10, exception=litellm.BadRequestError: OpenAIException - Invalid parameter: 'response_format' of type 'json_schema' is not supported with this model. Learn more about supported models at the Structured Outputs guide: https://platform.openai.com/docs/guides/structured-outputs
+Traceback (most recent call last):
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 823, in acompletion
+    headers, response = await self.make_openai_chat_completion_request(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/logging_utils.py", line 190, in async_wrapper
+    result = await func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 454, in make_openai_chat_completion_request
+    raise e
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 436, in make_openai_chat_completion_request
+    await openai_aclient.chat.completions.with_raw_response.create(
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/openai/_legacy_response.py", line 381, in wrapped
+    return cast(LegacyAPIResponse[R], await func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/openai/resources/chat/completions/completions.py", line 2603, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1794, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1594, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': "Invalid parameter: 'response_format' of type 'json_schema' is not supported with this model. Learn more about supported models at the Structured Outputs guide: https://platform.openai.com/docs/guides/structured-outputs", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/litellm/main.py", line 584, in acompletion
+    response = await init_response
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 870, in acompletion
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Error code: 400 - {'error': {'message': "Invalid parameter: 'response_format' of type 'json_schema' is not supported with this model. Learn more about supported models at the Structured Outputs guide: https://platform.openai.com/docs/guides/structured-outputs", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 71, in aretry
+    return await func(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/chat_model.py", line 109, in _base_acompletion
+    return await acompletion(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1628, in wrapper_async
+    raise e
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1474, in wrapper_async
+    result = await original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/litellm/main.py", line 603, in acompletion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2273, in exception_type
+    raise e
+  File "/Users/lamnguyen/Desktop/source/graphrag-app/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 392, in exception_type
+    raise BadRequestError(
+litellm.exceptions.BadRequestError: litellm.BadRequestError: OpenAIException - Invalid parameter: 'response_format' of type 'json_schema' is not supported with this model. Learn more about supported models at the Structured Outputs guide: https://platform.openai.com/docs/guides/structured-outputs
+2025-10-17 06:03:04.0855 - INFO - graphrag.logger.progress - level 2 summarize communities progress: 1/3
+2025-10-17 06:03:04.0856 - INFO - graphrag.logger.progress - level 2 summarize communities progress: 2/3
+2025-10-17 06:03:04.0856 - INFO - graphrag.logger.progress - level 2 summarize communities progress: 3/3
+2025-10-17 06:03:22.0095 - INFO - graphrag.index.validate_config - LLM Config Params Validated
+2025-10-17 06:03:23.0272 - INFO - graphrag.index.validate_config - Embedding LLM Config Params Validated
+2025-10-17 06:03:23.0272 - INFO - graphrag.cli.index - Starting pipeline run. False
+2025-10-17 06:03:23.0273 - INFO - graphrag.cli.index - Using default configuration: {
+    "root_dir": "/Users/lamnguyen/Desktop/source/graphrag-app/christmas",
+    "models": {
+        "default_chat_model": {
+            "api_key": "==== REDACTED ====",
+            "auth_type": "api_key",
+            "type": "chat",
+            "model_provider": "openai",
+            "model": "gpt-4o",
+            "encoding_model": "",
+            "api_base": null,
+            "api_version": null,
+            "deployment_name": null,
+            "proxy": null,
+            "audience": null,
+            "model_supports_json": true,
+            "request_timeout": 180.0,
+            "tokens_per_minute": null,
+            "requests_per_minute": null,
+            "rate_limit_strategy": "static",
+            "retry_strategy": "exponential_backoff",
+            "max_retries": 10,
+            "max_retry_wait": 10.0,
+            "concurrent_requests": 25,
+            "async_mode": "threaded",
+            "responses": null,
+            "max_tokens": null,
+            "temperature": 0,
+            "max_completion_tokens": null,
+            "reasoning_effort": null,
+            "top_p": 1,
+            "n": 1,
+            "frequency_penalty": 0.0,
+            "presence_penalty": 0.0
+        },
+        "default_embedding_model": {
+            "api_key": "==== REDACTED ====",
+            "auth_type": "api_key",
+            "type": "embedding",
+            "model_provider": "openai",
+            "model": "text-embedding-3-small",
+            "encoding_model": "",
+            "api_base": null,
+            "api_version": null,
+            "deployment_name": null,
+            "proxy": null,
+            "audience": null,
+            "model_supports_json": null,
+            "request_timeout": 180.0,
+            "tokens_per_minute": null,
+            "requests_per_minute": null,
+            "rate_limit_strategy": "static",
+            "retry_strategy": "exponential_backoff",
+            "max_retries": 10,
+            "max_retry_wait": 10.0,
+            "concurrent_requests": 25,
+            "async_mode": "threaded",
+            "responses": null,
+            "max_tokens": null,
+            "temperature": 0,
+            "max_completion_tokens": null,
+            "reasoning_effort": null,
+            "top_p": 1,
+            "n": 1,
+            "frequency_penalty": 0.0,
+            "presence_penalty": 0.0
+        }
+    },
+    "input": {
+        "storage": {
+            "type": "file",
+            "base_dir": "/Users/lamnguyen/Desktop/source/graphrag-app/christmas/input",
+            "storage_account_blob_url": null,
+            "cosmosdb_account_url": null
+        },
+        "file_type": "text",
+        "encoding": "utf-8",
+        "file_pattern": ".*\\.txt$",
+        "file_filter": null,
+        "text_column": "text",
+        "title_column": null,
+        "metadata": null
+    },
+    "chunks": {
+        "size": 1200,
+        "overlap": 100,
+        "group_by_columns": [
+            "id"
+        ],
+        "strategy": "tokens",
+        "encoding_model": "cl100k_base",
+        "prepend_metadata": false,
+        "chunk_size_includes_metadata": false
+    },
+    "output": {
+        "type": "file",
+        "base_dir": "/Users/lamnguyen/Desktop/source/graphrag-app/christmas/output",
+        "storage_account_blob_url": null,
+        "cosmosdb_account_url": null
+    },
+    "outputs": null,
+    "update_index_output": {
+        "type": "file",
+        "base_dir": "/Users/lamnguyen/Desktop/source/graphrag-app/christmas/update_output",
+        "storage_account_blob_url": null,
+        "cosmosdb_account_url": null
+    },
+    "cache": {
+        "type": "file",
+        "base_dir": "cache",
+        "storage_account_blob_url": null,
+        "cosmosdb_account_url": null
+    },
+    "reporting": {
+        "type": "file",
+        "base_dir": "/Users/lamnguyen/Desktop/source/graphrag-app/christmas/logs",
+        "storage_account_blob_url": null
+    },
+    "vector_store": {
+        "default_vector_store": {
+            "type": "lancedb",
+            "db_uri": "/Users/lamnguyen/Desktop/source/graphrag-app/christmas/output/lancedb",
+            "url": null,
+            "audience": null,
+            "container_name": "==== REDACTED ====",
+            "database_name": null,
+            "overwrite": true,
+            "embeddings_schema": {}
+        }
+    },
+    "workflows": null,
+    "embed_text": {
+        "model_id": "default_embedding_model",
+        "vector_store_id": "default_vector_store",
+        "batch_size": 16,
+        "batch_max_tokens": 8191,
+        "names": [
+            "entity.description",
+            "community.full_content",
+            "text_unit.text"
+        ],
+        "strategy": null
+    },
+    "extract_graph": {
+        "model_id": "default_chat_model",
+        "prompt": "prompts/extract_graph.txt",
+        "entity_types": [
+            "organization",
+            "person",
+            "geo",
+            "event"
+        ],
+        "max_gleanings": 1,
+        "strategy": null
+    },
+    "summarize_descriptions": {
+        "model_id": "default_chat_model",
+        "prompt": "prompts/summarize_descriptions.txt",
+        "max_length": 500,
+        "max_input_tokens": 4000,
+        "strategy": null
+    },
+    "extract_graph_nlp": {
+        "normalize_edge_weights": true,
+        "text_analyzer": {
+            "extractor_type": "regex_english",
+            "model_name": "en_core_web_md",
+            "max_word_length": 15,
+            "word_delimiter": " ",
+            "include_named_entities": true,
+            "exclude_nouns": [
+                "stuff",
+                "thing",
+                "things",
+                "bunch",
+                "bit",
+                "bits",
+                "people",
+                "person",
+                "okay",
+                "hey",
+                "hi",
+                "hello",
+                "laughter",
+                "oh"
+            ],
+            "exclude_entity_tags": [
+                "DATE"
+            ],
+            "exclude_pos_tags": [
+                "DET",
+                "PRON",
+                "INTJ",
+                "X"
+            ],
+            "noun_phrase_tags": [
+                "PROPN",
+                "NOUNS"
+            ],
+            "noun_phrase_grammars": {
+                "PROPN,PROPN": "PROPN",
+                "NOUN,NOUN": "NOUNS",
+                "NOUNS,NOUN": "NOUNS",
+                "ADJ,ADJ": "ADJ",
+                "ADJ,NOUN": "NOUNS"
+            }
+        },
+        "concurrent_requests": 25,
+        "async_mode": "threaded"
+    },
+    "prune_graph": {
+        "min_node_freq": 2,
+        "max_node_freq_std": null,
+        "min_node_degree": 1,
+        "max_node_degree_std": null,
+        "min_edge_weight_pct": 40.0,
+        "remove_ego_nodes": true,
+        "lcc_only": false
+    },
+    "cluster_graph": {
+        "max_cluster_size": 10,
+        "use_lcc": true,
+        "seed": 3735928559
+    },
+    "extract_claims": {
+        "enabled": false,
+        "model_id": "default_chat_model",
+        "prompt": "prompts/extract_claims.txt",
+        "description": "Any claims or facts that could be relevant to information discovery.",
+        "max_gleanings": 1,
+        "strategy": null
+    },
+    "community_reports": {
+        "model_id": "default_chat_model",
+        "graph_prompt": "prompts/community_report_graph.txt",
+        "text_prompt": "prompts/community_report_text.txt",
+        "max_length": 2000,
+        "max_input_length": 8000,
+        "strategy": null
+    },
+    "embed_graph": {
+        "enabled": false,
+        "dimensions": 1536,
+        "num_walks": 10,
+        "walk_length": 40,
+        "window_size": 2,
+        "iterations": 3,
+        "random_seed": 597832,
+        "use_lcc": true
+    },
+    "umap": {
+        "enabled": false
+    },
+    "snapshots": {
+        "embeddings": false,
+        "graphml": false,
+        "raw_graph": false
+    },
+    "local_search": {
+        "prompt": "prompts/local_search_system_prompt.txt",
+        "chat_model_id": "default_chat_model",
+        "embedding_model_id": "default_embedding_model",
+        "text_unit_prop": 0.5,
+        "community_prop": 0.15,
+        "conversation_history_max_turns": 5,
+        "top_k_entities": 10,
+        "top_k_relationships": 10,
+        "max_context_tokens": 12000
+    },
+    "global_search": {
+        "map_prompt": "prompts/global_search_map_system_prompt.txt",
+        "reduce_prompt": "prompts/global_search_reduce_system_prompt.txt",
+        "chat_model_id": "default_chat_model",
+        "knowledge_prompt": "prompts/global_search_knowledge_system_prompt.txt",
+        "max_context_tokens": 12000,
+        "data_max_tokens": 12000,
+        "map_max_length": 1000,
+        "reduce_max_length": 2000,
+        "dynamic_search_threshold": 1,
+        "dynamic_search_keep_parent": false,
+        "dynamic_search_num_repeats": 1,
+        "dynamic_search_use_summary": false,
+        "dynamic_search_max_level": 2
+    },
+    "drift_search": {
+        "prompt": "prompts/drift_search_system_prompt.txt",
+        "reduce_prompt": "prompts/drift_search_reduce_prompt.txt",
+        "chat_model_id": "default_chat_model",
+        "embedding_model_id": "default_embedding_model",
+        "data_max_tokens": 12000,
+        "reduce_max_tokens": null,
+        "reduce_temperature": 0,
+        "reduce_max_completion_tokens": null,
+        "concurrency": 32,
+        "drift_k_followups": 20,
+        "primer_folds": 5,
+        "primer_llm_max_tokens": 12000,
+        "n_depth": 3,
+        "local_search_text_unit_prop": 0.9,
+        "local_search_community_prop": 0.1,
+        "local_search_top_k_mapped_entities": 10,
+        "local_search_top_k_relationships": 10,
+        "local_search_max_data_tokens": 12000,
+        "local_search_temperature": 0,
+        "local_search_top_p": 1,
+        "local_search_n": 1,
+        "local_search_llm_max_gen_tokens": null,
+        "local_search_llm_max_gen_completion_tokens": null
+    },
+    "basic_search": {
+        "prompt": "prompts/basic_search_system_prompt.txt",
+        "chat_model_id": "default_chat_model",
+        "embedding_model_id": "default_embedding_model",
+        "k": 10,
+        "max_context_tokens": 12000
+    }
+}
+2025-10-17 06:03:23.0275 - INFO - graphrag.api.index - Initializing indexing pipeline...
+2025-10-17 06:03:23.0275 - INFO - graphrag.index.workflows.factory - Creating pipeline with workflows: ['load_input_documents', 'create_base_text_units', 'create_final_documents', 'extract_graph', 'finalize_graph', 'extract_covariates', 'create_communities', 'create_final_text_units', 'create_community_reports', 'generate_text_embeddings']
+2025-10-17 06:03:23.0275 - INFO - graphrag.storage.file_pipeline_storage - Creating file storage at /Users/lamnguyen/Desktop/source/graphrag-app/christmas/input
+2025-10-17 06:03:23.0275 - INFO - graphrag.storage.file_pipeline_storage - Creating file storage at /Users/lamnguyen/Desktop/source/graphrag-app/christmas/output
+2025-10-17 06:03:23.0275 - INFO - graphrag.storage.file_pipeline_storage - Creating file storage at /Users/lamnguyen/Desktop/source/graphrag-app/christmas
+2025-10-17 06:03:23.0275 - INFO - graphrag.storage.file_pipeline_storage - Creating file storage at /Users/lamnguyen/Desktop/source/graphrag-app/christmas/cache
+2025-10-17 06:03:23.0276 - INFO - graphrag.index.run.run_pipeline - Running standard indexing.
+2025-10-17 06:03:23.0276 - INFO - graphrag.storage.file_pipeline_storage - Creating file storage at 
+2025-10-17 06:03:23.0277 - INFO - graphrag.index.run.run_pipeline - Executing pipeline...
+2025-10-17 06:03:23.0277 - INFO - graphrag.index.input.factory - loading input from root_dir=/Users/lamnguyen/Desktop/source/graphrag-app/christmas/input
+2025-10-17 06:03:23.0277 - INFO - graphrag.index.input.factory - Loading Input InputFileType.text
+2025-10-17 06:03:23.0278 - INFO - graphrag.storage.file_pipeline_storage - search /Users/lamnguyen/Desktop/source/graphrag-app/christmas/input for files matching .*\.txt$
+2025-10-17 06:03:23.0280 - INFO - graphrag.index.input.util - Found 1 InputFileType.text files, loading 1
+2025-10-17 06:03:23.0280 - INFO - graphrag.index.input.util - Total number of unfiltered InputFileType.text rows: 1
+2025-10-17 06:03:23.0280 - INFO - graphrag.index.workflows.load_input_documents - Final # of rows loaded: 1
+2025-10-17 06:03:23.0287 - INFO - graphrag.api.index - Workflow load_input_documents completed successfully
+2025-10-17 06:03:23.0291 - INFO - graphrag.index.workflows.create_base_text_units - Workflow started: create_base_text_units
+2025-10-17 06:03:23.0291 - INFO - graphrag.utils.storage - reading table from storage: documents.parquet
+2025-10-17 06:03:23.0297 - INFO - graphrag.index.workflows.create_base_text_units - Starting chunking process for 1 documents
+2025-10-17 06:03:23.0463 - INFO - graphrag.index.workflows.create_base_text_units - chunker progress:  1/1
+2025-10-17 06:03:23.0469 - INFO - graphrag.index.workflows.create_base_text_units - Workflow completed: create_base_text_units
+2025-10-17 06:03:23.0469 - INFO - graphrag.api.index - Workflow create_base_text_units completed successfully
+2025-10-17 06:03:23.0473 - INFO - graphrag.index.workflows.create_final_documents - Workflow started: create_final_documents
+2025-10-17 06:03:23.0473 - INFO - graphrag.utils.storage - reading table from storage: documents.parquet
+2025-10-17 06:03:23.0474 - INFO - graphrag.utils.storage - reading table from storage: text_units.parquet
+2025-10-17 06:03:23.0481 - INFO - graphrag.index.workflows.create_final_documents - Workflow completed: create_final_documents
+2025-10-17 06:03:23.0482 - INFO - graphrag.api.index - Workflow create_final_documents completed successfully
+2025-10-17 06:03:23.0484 - INFO - graphrag.index.workflows.extract_graph - Workflow started: extract_graph
+2025-10-17 06:03:23.0484 - INFO - graphrag.utils.storage - reading table from storage: text_units.parquet
+2025-10-17 06:03:23.0489 - INFO - graphrag.storage.file_pipeline_storage - Creating file storage at /Users/lamnguyen/Desktop/source/graphrag-app/christmas/cache/extract_graph
+2025-10-17 06:03:30.0534 - INFO - graphrag.logger.progress - extract graph progress: 1/42
+2025-10-17 06:03:30.0979 - INFO - graphrag.logger.progress - extract graph progress: 2/42
+2025-10-17 06:03:33.0898 - INFO - graphrag.logger.progress - extract graph progress: 3/42
+2025-10-17 06:03:34.0211 - INFO - graphrag.logger.progress - extract graph progress: 4/42
+2025-10-17 06:03:34.0411 - INFO - graphrag.logger.progress - extract graph progress: 5/42
+2025-10-17 06:03:35.0223 - INFO - graphrag.logger.progress - extract graph progress: 6/42
+2025-10-17 06:03:35.0224 - INFO - graphrag.logger.progress - extract graph progress: 7/42
+2025-10-17 06:03:35.0376 - INFO - graphrag.logger.progress - extract graph progress: 8/42
+2025-10-17 06:03:35.0520 - INFO - graphrag.logger.progress - extract graph progress: 9/42
+2025-10-17 06:03:35.0612 - INFO - graphrag.logger.progress - extract graph progress: 10/42
+2025-10-17 06:03:35.0644 - INFO - graphrag.logger.progress - extract graph progress: 11/42
+2025-10-17 06:03:35.0692 - INFO - graphrag.logger.progress - extract graph progress: 12/42
+2025-10-17 06:03:35.0729 - INFO - graphrag.logger.progress - extract graph progress: 13/42
+2025-10-17 06:03:36.0960 - INFO - graphrag.logger.progress - extract graph progress: 14/42
+2025-10-17 06:03:38.0284 - INFO - graphrag.logger.progress - extract graph progress: 15/42
+2025-10-17 06:03:38.0403 - INFO - graphrag.logger.progress - extract graph progress: 16/42
+2025-10-17 06:03:38.0419 - INFO - graphrag.logger.progress - extract graph progress: 17/42
+2025-10-17 06:03:38.0783 - INFO - graphrag.logger.progress - extract graph progress: 18/42
+2025-10-17 06:03:38.0813 - INFO - graphrag.logger.progress - extract graph progress: 19/42
+2025-10-17 06:03:39.0790 - INFO - graphrag.logger.progress - extract graph progress: 20/42
+2025-10-17 06:03:40.0149 - INFO - graphrag.logger.progress - extract graph progress: 21/42
+2025-10-17 06:03:41.0058 - INFO - graphrag.logger.progress - extract graph progress: 22/42
+2025-10-17 06:03:41.0221 - INFO - graphrag.logger.progress - extract graph progress: 23/42
+2025-10-17 06:03:41.0278 - INFO - graphrag.logger.progress - extract graph progress: 24/42
+2025-10-17 06:03:41.0870 - INFO - graphrag.logger.progress - extract graph progress: 25/42
+2025-10-17 06:03:43.0230 - INFO - graphrag.logger.progress - extract graph progress: 26/42
+2025-10-17 06:03:43.0332 - INFO - graphrag.logger.progress - extract graph progress: 27/42
+2025-10-17 06:03:43.0539 - INFO - graphrag.logger.progress - extract graph progress: 28/42
+2025-10-17 06:03:43.0712 - INFO - graphrag.logger.progress - extract graph progress: 29/42
+2025-10-17 06:03:44.0363 - INFO - graphrag.logger.progress - extract graph progress: 30/42
+2025-10-17 06:03:44.0878 - INFO - graphrag.logger.progress - extract graph progress: 31/42
+2025-10-17 06:03:45.0150 - INFO - graphrag.logger.progress - extract graph progress: 32/42
+2025-10-17 06:03:45.0360 - INFO - graphrag.logger.progress - extract graph progress: 33/42
+2025-10-17 06:03:45.0669 - INFO - graphrag.logger.progress - extract graph progress: 34/42
+2025-10-17 06:03:45.0703 - INFO - graphrag.logger.progress - extract graph progress: 35/42
+2025-10-17 06:03:45.0979 - INFO - graphrag.logger.progress - extract graph progress: 36/42
+2025-10-17 06:03:45.0996 - INFO - graphrag.logger.progress - extract graph progress: 37/42
+2025-10-17 06:03:47.0393 - INFO - graphrag.logger.progress - extract graph progress: 38/42
+2025-10-17 06:03:47.0902 - INFO - graphrag.logger.progress - extract graph progress: 39/42
+2025-10-17 06:03:49.0549 - INFO - graphrag.logger.progress - extract graph progress: 40/42
+2025-10-17 06:03:50.0262 - INFO - graphrag.logger.progress - extract graph progress: 41/42
+2025-10-17 06:03:51.0481 - INFO - graphrag.logger.progress - extract graph progress: 42/42
+2025-10-17 06:03:51.0504 - INFO - graphrag.storage.file_pipeline_storage - Creating file storage at /Users/lamnguyen/Desktop/source/graphrag-app/christmas/cache/summarize_descriptions
+2025-10-17 06:03:51.0505 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 1/373
+2025-10-17 06:03:51.0508 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 2/373
+2025-10-17 06:03:51.0508 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 3/373
+2025-10-17 06:03:51.0509 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 4/373
+2025-10-17 06:03:51.0510 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 5/373
+2025-10-17 06:03:51.0510 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 6/373
+2025-10-17 06:03:51.0512 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 7/373
+2025-10-17 06:03:51.0512 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 8/373
+2025-10-17 06:03:51.0512 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 9/373
+2025-10-17 06:03:51.0513 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 10/373
+2025-10-17 06:03:51.0513 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 11/373
+2025-10-17 06:03:51.0513 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 12/373
+2025-10-17 06:03:51.0513 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 13/373
+2025-10-17 06:03:51.0514 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 14/373
+2025-10-17 06:03:51.0514 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 15/373
+2025-10-17 06:03:51.0514 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 16/373
+2025-10-17 06:03:51.0514 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 17/373
+2025-10-17 06:03:51.0514 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 18/373
+2025-10-17 06:03:51.0514 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 19/373
+2025-10-17 06:03:51.0514 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 20/373
+2025-10-17 06:03:51.0514 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 21/373
+2025-10-17 06:03:51.0514 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 22/373
+2025-10-17 06:03:51.0514 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 23/373
+2025-10-17 06:03:51.0514 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 24/373
+2025-10-17 06:03:51.0514 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 25/373
+2025-10-17 06:03:51.0515 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 26/373
+2025-10-17 06:03:51.0515 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 27/373
+2025-10-17 06:03:51.0515 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 28/373
+2025-10-17 06:03:51.0515 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 29/373
+2025-10-17 06:03:51.0515 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 30/373
+2025-10-17 06:03:51.0515 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 31/373
+2025-10-17 06:03:51.0515 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 32/373
+2025-10-17 06:03:51.0515 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 33/373
+2025-10-17 06:03:51.0515 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 34/373
+2025-10-17 06:03:51.0515 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 35/373
+2025-10-17 06:03:51.0515 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 36/373
+2025-10-17 06:03:51.0516 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 37/373
+2025-10-17 06:03:51.0516 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 38/373
+2025-10-17 06:03:51.0516 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 39/373
+2025-10-17 06:03:51.0516 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 40/373
+2025-10-17 06:03:51.0516 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 41/373
+2025-10-17 06:03:51.0516 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 42/373
+2025-10-17 06:03:51.0516 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 43/373
+2025-10-17 06:03:51.0516 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 44/373
+2025-10-17 06:03:51.0516 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 45/373
+2025-10-17 06:03:51.0516 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 46/373
+2025-10-17 06:03:51.0516 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 47/373
+2025-10-17 06:03:51.0516 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 48/373
+2025-10-17 06:03:51.0517 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 49/373
+2025-10-17 06:03:51.0517 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 50/373
+2025-10-17 06:03:51.0517 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 51/373
+2025-10-17 06:03:51.0517 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 52/373
+2025-10-17 06:03:51.0517 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 53/373
+2025-10-17 06:03:51.0517 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 54/373
+2025-10-17 06:03:51.0517 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 55/373
+2025-10-17 06:03:51.0517 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 56/373
+2025-10-17 06:03:51.0517 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 57/373
+2025-10-17 06:03:51.0517 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 58/373
+2025-10-17 06:03:51.0517 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 59/373
+2025-10-17 06:03:51.0517 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 60/373
+2025-10-17 06:03:51.0517 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 61/373
+2025-10-17 06:03:51.0517 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 62/373
+2025-10-17 06:03:51.0517 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 63/373
+2025-10-17 06:03:51.0517 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 64/373
+2025-10-17 06:03:51.0517 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 65/373
+2025-10-17 06:03:51.0517 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 66/373
+2025-10-17 06:03:51.0517 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 67/373
+2025-10-17 06:03:51.0517 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 68/373
+2025-10-17 06:03:51.0518 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 69/373
+2025-10-17 06:03:51.0518 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 70/373
+2025-10-17 06:03:51.0518 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 71/373
+2025-10-17 06:03:51.0518 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 72/373
+2025-10-17 06:03:51.0518 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 73/373
+2025-10-17 06:03:51.0518 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 74/373
+2025-10-17 06:03:51.0518 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 75/373
+2025-10-17 06:03:51.0518 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 76/373
+2025-10-17 06:03:51.0518 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 77/373
+2025-10-17 06:03:51.0518 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 78/373
+2025-10-17 06:03:51.0518 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 79/373
+2025-10-17 06:03:53.0735 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 80/373
+2025-10-17 06:03:53.0735 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 81/373
+2025-10-17 06:03:53.0735 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 82/373
+2025-10-17 06:03:53.0735 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 83/373
+2025-10-17 06:03:53.0736 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 84/373
+2025-10-17 06:03:53.0736 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 85/373
+2025-10-17 06:03:53.0773 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 86/373
+2025-10-17 06:03:53.0773 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 87/373
+2025-10-17 06:03:53.0773 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 88/373
+2025-10-17 06:03:53.0774 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 89/373
+2025-10-17 06:03:54.0277 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 90/373
+2025-10-17 06:03:54.0292 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 91/373
+2025-10-17 06:03:54.0520 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 92/373
+2025-10-17 06:03:54.0630 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 93/373
+2025-10-17 06:03:54.0718 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 94/373
+2025-10-17 06:03:54.0718 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 95/373
+2025-10-17 06:03:54.0718 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 96/373
+2025-10-17 06:03:54.0719 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 97/373
+2025-10-17 06:03:54.0719 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 98/373
+2025-10-17 06:03:54.0719 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 99/373
+2025-10-17 06:03:54.0719 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 100/373
+2025-10-17 06:03:54.0719 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 101/373
+2025-10-17 06:03:54.0730 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 102/373
+2025-10-17 06:03:54.0913 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 103/373
+2025-10-17 06:03:54.0914 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 104/373
+2025-10-17 06:03:54.0914 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 105/373
+2025-10-17 06:03:54.0914 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 106/373
+2025-10-17 06:03:54.0914 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 107/373
+2025-10-17 06:03:54.0914 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 108/373
+2025-10-17 06:03:54.0914 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 109/373
+2025-10-17 06:03:54.0914 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 110/373
+2025-10-17 06:03:54.0914 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 111/373
+2025-10-17 06:03:54.0914 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 112/373
+2025-10-17 06:03:54.0914 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 113/373
+2025-10-17 06:03:54.0915 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 114/373
+2025-10-17 06:03:54.0915 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 115/373
+2025-10-17 06:03:54.0915 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 116/373
+2025-10-17 06:03:55.0362 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 117/373
+2025-10-17 06:03:55.0556 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 118/373
+2025-10-17 06:03:55.0556 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 119/373
+2025-10-17 06:03:55.0557 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 120/373
+2025-10-17 06:03:55.0557 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 121/373
+2025-10-17 06:03:55.0557 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 122/373
+2025-10-17 06:03:55.0557 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 123/373
+2025-10-17 06:03:55.0557 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 124/373
+2025-10-17 06:03:55.0557 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 125/373
+2025-10-17 06:03:55.0557 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 126/373
+2025-10-17 06:03:55.0557 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 127/373
+2025-10-17 06:03:55.0558 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 128/373
+2025-10-17 06:03:55.0558 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 129/373
+2025-10-17 06:03:55.0558 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 130/373
+2025-10-17 06:03:55.0558 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 131/373
+2025-10-17 06:03:55.0558 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 132/373
+2025-10-17 06:03:55.0558 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 133/373
+2025-10-17 06:03:55.0558 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 134/373
+2025-10-17 06:03:55.0558 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 135/373
+2025-10-17 06:03:55.0558 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 136/373
+2025-10-17 06:03:55.0559 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 137/373
+2025-10-17 06:03:55.0605 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 138/373
+2025-10-17 06:03:55.0605 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 139/373
+2025-10-17 06:03:55.0606 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 140/373
+2025-10-17 06:03:55.0606 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 141/373
+2025-10-17 06:03:55.0606 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 142/373
+2025-10-17 06:03:55.0606 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 143/373
+2025-10-17 06:03:55.0606 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 144/373
+2025-10-17 06:03:56.0219 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 145/373
+2025-10-17 06:03:56.0550 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 146/373
+2025-10-17 06:03:56.0615 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 147/373
+2025-10-17 06:03:56.0733 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 148/373
+2025-10-17 06:03:56.0845 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 149/373
+2025-10-17 06:03:56.0943 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 150/373
+2025-10-17 06:03:57.0070 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 151/373
+2025-10-17 06:03:57.0137 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 152/373
+2025-10-17 06:03:57.0214 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 153/373
+2025-10-17 06:03:57.0294 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 154/373
+2025-10-17 06:03:57.0507 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 155/373
+2025-10-17 06:03:57.0561 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 156/373
+2025-10-17 06:03:57.0767 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 157/373
+2025-10-17 06:03:57.0999 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 158/373
+2025-10-17 06:03:58.0008 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 159/373
+2025-10-17 06:03:58.0423 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 160/373
+2025-10-17 06:03:58.0424 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 161/373
+2025-10-17 06:03:58.0548 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 162/373
+2025-10-17 06:03:58.0775 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 163/373
+2025-10-17 06:03:58.0918 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 164/373
+2025-10-17 06:03:59.0035 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 165/373
+2025-10-17 06:03:59.0071 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 166/373
+2025-10-17 06:03:59.0479 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 167/373
+2025-10-17 06:03:59.0996 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 168/373
+2025-10-17 06:03:59.0999 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 169/373
+2025-10-17 06:04:00.0000 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 170/373
+2025-10-17 06:04:00.0000 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 171/373
+2025-10-17 06:04:00.0000 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 172/373
+2025-10-17 06:04:00.0001 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 173/373
+2025-10-17 06:04:00.0001 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 174/373
+2025-10-17 06:04:00.0001 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 175/373
+2025-10-17 06:04:00.0002 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 176/373
+2025-10-17 06:04:00.0002 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 177/373
+2025-10-17 06:04:00.0003 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 178/373
+2025-10-17 06:04:00.0003 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 179/373
+2025-10-17 06:04:00.0003 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 180/373
+2025-10-17 06:04:00.0003 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 181/373
+2025-10-17 06:04:00.0004 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 182/373
+2025-10-17 06:04:00.0004 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 183/373
+2025-10-17 06:04:00.0004 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 184/373
+2025-10-17 06:04:00.0004 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 185/373
+2025-10-17 06:04:00.0004 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 186/373
+2025-10-17 06:04:00.0005 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 187/373
+2025-10-17 06:04:00.0005 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 188/373
+2025-10-17 06:04:00.0005 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 189/373
+2025-10-17 06:04:00.0005 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 190/373
+2025-10-17 06:04:00.0005 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 191/373
+2025-10-17 06:04:00.0006 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 192/373
+2025-10-17 06:04:00.0006 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 193/373
+2025-10-17 06:04:00.0006 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 194/373
+2025-10-17 06:04:00.0007 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 195/373
+2025-10-17 06:04:00.0007 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 196/373
+2025-10-17 06:04:00.0007 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 197/373
+2025-10-17 06:04:00.0007 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 198/373
+2025-10-17 06:04:00.0008 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 199/373
+2025-10-17 06:04:00.0008 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 200/373
+2025-10-17 06:04:00.0008 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 201/373
+2025-10-17 06:04:00.0008 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 202/373
+2025-10-17 06:04:00.0008 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 203/373
+2025-10-17 06:04:00.0008 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 204/373
+2025-10-17 06:04:00.0008 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 205/373
+2025-10-17 06:04:00.0008 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 206/373
+2025-10-17 06:04:00.0008 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 207/373
+2025-10-17 06:04:00.0008 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 208/373
+2025-10-17 06:04:00.0008 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 209/373
+2025-10-17 06:04:00.0008 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 210/373
+2025-10-17 06:04:00.0009 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 211/373
+2025-10-17 06:04:00.0009 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 212/373
+2025-10-17 06:04:00.0009 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 213/373
+2025-10-17 06:04:00.0009 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 214/373
+2025-10-17 06:04:00.0009 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 215/373
+2025-10-17 06:04:00.0009 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 216/373
+2025-10-17 06:04:00.0009 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 217/373
+2025-10-17 06:04:00.0009 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 218/373
+2025-10-17 06:04:00.0009 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 219/373
+2025-10-17 06:04:00.0009 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 220/373
+2025-10-17 06:04:00.0009 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 221/373
+2025-10-17 06:04:00.0009 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 222/373
+2025-10-17 06:04:00.0009 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 223/373
+2025-10-17 06:04:00.0009 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 224/373
+2025-10-17 06:04:00.0009 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 225/373
+2025-10-17 06:04:00.0009 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 226/373
+2025-10-17 06:04:00.0009 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 227/373
+2025-10-17 06:04:00.0009 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 228/373
+2025-10-17 06:04:01.0733 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 229/373
+2025-10-17 06:04:01.0733 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 230/373
+2025-10-17 06:04:01.0734 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 231/373
+2025-10-17 06:04:01.0734 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 232/373
+2025-10-17 06:04:01.0734 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 233/373
+2025-10-17 06:04:02.0116 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 234/373
+2025-10-17 06:04:02.0144 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 235/373
+2025-10-17 06:04:02.0144 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 236/373
+2025-10-17 06:04:02.0144 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 237/373
+2025-10-17 06:04:02.0144 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 238/373
+2025-10-17 06:04:02.0145 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 239/373
+2025-10-17 06:04:02.0145 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 240/373
+2025-10-17 06:04:02.0145 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 241/373
+2025-10-17 06:04:02.0145 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 242/373
+2025-10-17 06:04:02.0238 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 243/373
+2025-10-17 06:04:02.0238 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 244/373
+2025-10-17 06:04:02.0238 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 245/373
+2025-10-17 06:04:02.0238 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 246/373
+2025-10-17 06:04:02.0239 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 247/373
+2025-10-17 06:04:02.0448 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 248/373
+2025-10-17 06:04:02.0449 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 249/373
+2025-10-17 06:04:02.0449 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 250/373
+2025-10-17 06:04:02.0449 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 251/373
+2025-10-17 06:04:02.0647 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 252/373
+2025-10-17 06:04:02.0699 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 253/373
+2025-10-17 06:04:02.0708 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 254/373
+2025-10-17 06:04:02.0811 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 255/373
+2025-10-17 06:04:02.0831 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 256/373
+2025-10-17 06:04:02.0831 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 257/373
+2025-10-17 06:04:02.0831 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 258/373
+2025-10-17 06:04:02.0831 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 259/373
+2025-10-17 06:04:02.0831 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 260/373
+2025-10-17 06:04:02.0831 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 261/373
+2025-10-17 06:04:02.0831 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 262/373
+2025-10-17 06:04:02.0831 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 263/373
+2025-10-17 06:04:02.0832 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 264/373
+2025-10-17 06:04:02.0882 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 265/373
+2025-10-17 06:04:02.0890 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 266/373
+2025-10-17 06:04:02.0897 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 267/373
+2025-10-17 06:04:02.0897 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 268/373
+2025-10-17 06:04:02.0898 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 269/373
+2025-10-17 06:04:02.0898 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 270/373
+2025-10-17 06:04:02.0898 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 271/373
+2025-10-17 06:04:02.0898 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 272/373
+2025-10-17 06:04:02.0898 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 273/373
+2025-10-17 06:04:02.0898 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 274/373
+2025-10-17 06:04:02.0898 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 275/373
+2025-10-17 06:04:02.0898 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 276/373
+2025-10-17 06:04:02.0898 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 277/373
+2025-10-17 06:04:02.0898 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 278/373
+2025-10-17 06:04:02.0898 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 279/373
+2025-10-17 06:04:02.0898 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 280/373
+2025-10-17 06:04:02.0898 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 281/373
+2025-10-17 06:04:02.0898 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 282/373
+2025-10-17 06:04:02.0898 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 283/373
+2025-10-17 06:04:02.0898 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 284/373
+2025-10-17 06:04:02.0898 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 285/373
+2025-10-17 06:04:02.0898 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 286/373
+2025-10-17 06:04:02.0899 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 287/373
+2025-10-17 06:04:02.0899 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 288/373
+2025-10-17 06:04:02.0899 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 289/373
+2025-10-17 06:04:02.0899 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 290/373
+2025-10-17 06:04:02.0899 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 291/373
+2025-10-17 06:04:02.0899 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 292/373
+2025-10-17 06:04:02.0899 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 293/373
+2025-10-17 06:04:02.0899 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 294/373
+2025-10-17 06:04:02.0899 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 295/373
+2025-10-17 06:04:02.0899 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 296/373
+2025-10-17 06:04:02.0899 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 297/373
+2025-10-17 06:04:02.0899 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 298/373
+2025-10-17 06:04:02.0932 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 299/373
+2025-10-17 06:04:02.0960 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 300/373
+2025-10-17 06:04:02.0960 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 301/373
+2025-10-17 06:04:02.0961 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 302/373
+2025-10-17 06:04:02.0961 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 303/373
+2025-10-17 06:04:02.0961 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 304/373
+2025-10-17 06:04:02.0961 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 305/373
+2025-10-17 06:04:02.0961 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 306/373
+2025-10-17 06:04:02.0961 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 307/373
+2025-10-17 06:04:02.0961 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 308/373
+2025-10-17 06:04:02.0961 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 309/373
+2025-10-17 06:04:02.0961 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 310/373
+2025-10-17 06:04:02.0961 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 311/373
+2025-10-17 06:04:02.0981 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 312/373
+2025-10-17 06:04:02.0981 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 313/373
+2025-10-17 06:04:02.0981 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 314/373
+2025-10-17 06:04:02.0981 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 315/373
+2025-10-17 06:04:02.0981 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 316/373
+2025-10-17 06:04:02.0981 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 317/373
+2025-10-17 06:04:02.0981 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 318/373
+2025-10-17 06:04:02.0981 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 319/373
+2025-10-17 06:04:02.0981 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 320/373
+2025-10-17 06:04:02.0981 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 321/373
+2025-10-17 06:04:02.0981 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 322/373
+2025-10-17 06:04:02.0982 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 323/373
+2025-10-17 06:04:02.0982 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 324/373
+2025-10-17 06:04:02.0982 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 325/373
+2025-10-17 06:04:02.0982 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 326/373
+2025-10-17 06:04:02.0982 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 327/373
+2025-10-17 06:04:02.0982 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 328/373
+2025-10-17 06:04:02.0982 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 329/373
+2025-10-17 06:04:02.0982 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 330/373
+2025-10-17 06:04:02.0982 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 331/373
+2025-10-17 06:04:02.0982 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 332/373
+2025-10-17 06:04:02.0982 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 333/373
+2025-10-17 06:04:02.0982 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 334/373
+2025-10-17 06:04:03.0089 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 335/373
+2025-10-17 06:04:03.0089 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 336/373
+2025-10-17 06:04:03.0090 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 337/373
+2025-10-17 06:04:03.0090 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 338/373
+2025-10-17 06:04:03.0090 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 339/373
+2025-10-17 06:04:03.0090 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 340/373
+2025-10-17 06:04:03.0090 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 341/373
+2025-10-17 06:04:03.0090 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 342/373
+2025-10-17 06:04:03.0090 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 343/373
+2025-10-17 06:04:03.0090 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 344/373
+2025-10-17 06:04:03.0090 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 345/373
+2025-10-17 06:04:03.0090 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 346/373
+2025-10-17 06:04:03.0090 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 347/373
+2025-10-17 06:04:03.0090 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 348/373
+2025-10-17 06:04:03.0090 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 349/373
+2025-10-17 06:04:03.0310 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 350/373
+2025-10-17 06:04:04.0132 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 351/373
+2025-10-17 06:04:04.0753 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 352/373
+2025-10-17 06:04:04.0832 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 353/373
+2025-10-17 06:04:05.0437 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 354/373
+2025-10-17 06:04:05.0545 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 355/373
+2025-10-17 06:04:05.0712 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 356/373
+2025-10-17 06:04:06.0211 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 357/373
+2025-10-17 06:04:06.0329 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 358/373
+2025-10-17 06:04:06.0478 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 359/373
+2025-10-17 06:04:06.0591 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 360/373
+2025-10-17 06:04:06.0706 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 361/373
+2025-10-17 06:04:06.0842 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 362/373
+2025-10-17 06:04:07.0780 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 363/373
+2025-10-17 06:04:07.0781 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 364/373
+2025-10-17 06:04:08.0904 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 365/373
+2025-10-17 06:04:09.0116 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 366/373
+2025-10-17 06:04:09.0312 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 367/373
+2025-10-17 06:04:09.0447 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 368/373
+2025-10-17 06:04:10.0338 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 369/373
+2025-10-17 06:04:10.0668 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 370/373
+2025-10-17 06:04:11.0672 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 371/373
+2025-10-17 06:04:13.0258 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 372/373
+2025-10-17 06:04:17.0131 - INFO - graphrag.logger.progress - Summarize entity/relationship description progress: 373/373
+2025-10-17 06:04:17.0141 - INFO - graphrag.index.workflows.extract_graph - Workflow completed: extract_graph
+2025-10-17 06:04:17.0141 - INFO - graphrag.api.index - Workflow extract_graph completed successfully
+2025-10-17 06:04:17.0149 - INFO - graphrag.index.workflows.finalize_graph - Workflow started: finalize_graph
+2025-10-17 06:04:17.0149 - INFO - graphrag.utils.storage - reading table from storage: entities.parquet
+2025-10-17 06:04:17.0152 - INFO - graphrag.utils.storage - reading table from storage: relationships.parquet
+2025-10-17 06:04:17.0170 - INFO - graphrag.index.workflows.finalize_graph - Workflow completed: finalize_graph
+2025-10-17 06:04:17.0170 - INFO - graphrag.api.index - Workflow finalize_graph completed successfully
+2025-10-17 06:04:17.0176 - INFO - graphrag.index.workflows.extract_covariates - Workflow started: extract_covariates
+2025-10-17 06:04:17.0176 - INFO - graphrag.index.workflows.extract_covariates - Workflow completed: extract_covariates
+2025-10-17 06:04:17.0176 - INFO - graphrag.api.index - Workflow extract_covariates completed successfully
+2025-10-17 06:04:17.0176 - INFO - graphrag.index.workflows.create_communities - Workflow started: create_communities
+2025-10-17 06:04:17.0177 - INFO - graphrag.utils.storage - reading table from storage: entities.parquet
+2025-10-17 06:04:17.0179 - INFO - graphrag.utils.storage - reading table from storage: relationships.parquet
+2025-10-17 06:04:17.0205 - INFO - graphrag.index.workflows.create_communities - Workflow completed: create_communities
+2025-10-17 06:04:17.0205 - INFO - graphrag.api.index - Workflow create_communities completed successfully
+2025-10-17 06:04:17.0213 - INFO - graphrag.index.workflows.create_final_text_units - Workflow started: create_final_text_units
+2025-10-17 06:04:17.0213 - INFO - graphrag.utils.storage - reading table from storage: text_units.parquet
+2025-10-17 06:04:17.0215 - INFO - graphrag.utils.storage - reading table from storage: entities.parquet
+2025-10-17 06:04:17.0216 - INFO - graphrag.utils.storage - reading table from storage: relationships.parquet
+2025-10-17 06:04:17.0228 - INFO - graphrag.index.workflows.create_final_text_units - Workflow completed: create_final_text_units
+2025-10-17 06:04:17.0228 - INFO - graphrag.api.index - Workflow create_final_text_units completed successfully
+2025-10-17 06:04:17.0238 - INFO - graphrag.index.workflows.create_community_reports - Workflow started: create_community_reports
+2025-10-17 06:04:17.0238 - INFO - graphrag.utils.storage - reading table from storage: relationships.parquet
+2025-10-17 06:04:17.0240 - INFO - graphrag.utils.storage - reading table from storage: entities.parquet
+2025-10-17 06:04:17.0242 - INFO - graphrag.utils.storage - reading table from storage: communities.parquet
+2025-10-17 06:04:17.0248 - INFO - graphrag.index.operations.summarize_communities.graph_context.context_builder - Number of nodes at level=2 => 42
+2025-10-17 06:04:17.0316 - INFO - graphrag.index.operations.summarize_communities.graph_context.context_builder - Number of nodes at level=1 => 84
+2025-10-17 06:04:17.0395 - INFO - graphrag.index.operations.summarize_communities.graph_context.context_builder - Number of nodes at level=0 => 129
+2025-10-17 06:04:17.0541 - INFO - graphrag.storage.file_pipeline_storage - Creating file storage at /Users/lamnguyen/Desktop/source/graphrag-app/christmas/cache/community_reporting
+2025-10-17 06:04:27.0852 - INFO - graphrag.logger.progress - level 2 summarize communities progress: 1/2
+2025-10-17 06:04:29.0593 - INFO - graphrag.logger.progress - level 2 summarize communities progress: 2/2
+2025-10-17 06:04:37.0779 - INFO - graphrag.logger.progress - level 1 summarize communities progress: 1/12
+2025-10-17 06:04:41.0718 - INFO - graphrag.logger.progress - level 1 summarize communities progress: 2/12
+2025-10-17 06:04:41.0733 - INFO - graphrag.logger.progress - level 1 summarize communities progress: 3/12
+2025-10-17 06:04:42.0088 - INFO - graphrag.logger.progress - level 1 summarize communities progress: 4/12
+2025-10-17 06:04:42.0201 - INFO - graphrag.logger.progress - level 1 summarize communities progress: 5/12
+2025-10-17 06:04:42.0898 - INFO - graphrag.logger.progress - level 1 summarize communities progress: 6/12
+2025-10-17 06:04:42.0934 - INFO - graphrag.logger.progress - level 1 summarize communities progress: 7/12
+2025-10-17 06:04:43.0617 - INFO - graphrag.logger.progress - level 1 summarize communities progress: 8/12
+2025-10-17 06:04:44.0640 - INFO - graphrag.logger.progress - level 1 summarize communities progress: 9/12
+2025-10-17 06:04:45.0482 - INFO - graphrag.logger.progress - level 1 summarize communities progress: 10/12
+2025-10-17 06:04:45.0792 - INFO - graphrag.logger.progress - level 1 summarize communities progress: 11/12
+2025-10-17 06:04:46.0651 - INFO - graphrag.logger.progress - level 1 summarize communities progress: 12/12
+2025-10-17 06:04:57.0256 - INFO - graphrag.logger.progress - level 0 summarize communities progress: 1/10
+2025-10-17 06:04:57.0446 - INFO - graphrag.logger.progress - level 0 summarize communities progress: 2/10
+2025-10-17 06:04:59.0186 - INFO - graphrag.logger.progress - level 0 summarize communities progress: 3/10
+2025-10-17 06:04:59.0597 - INFO - graphrag.logger.progress - level 0 summarize communities progress: 4/10
+2025-10-17 06:05:00.0122 - INFO - graphrag.logger.progress - level 0 summarize communities progress: 5/10
+2025-10-17 06:05:00.0172 - INFO - graphrag.logger.progress - level 0 summarize communities progress: 6/10
+2025-10-17 06:05:00.0198 - INFO - graphrag.logger.progress - level 0 summarize communities progress: 7/10
+2025-10-17 06:05:06.0047 - INFO - graphrag.logger.progress - level 0 summarize communities progress: 8/10
+2025-10-17 06:05:06.0258 - INFO - graphrag.logger.progress - level 0 summarize communities progress: 9/10
+2025-10-17 06:05:07.0896 - INFO - graphrag.logger.progress - level 0 summarize communities progress: 10/10
+2025-10-17 06:05:07.0907 - INFO - graphrag.index.workflows.create_community_reports - Workflow completed: create_community_reports
+2025-10-17 06:05:07.0908 - INFO - graphrag.api.index - Workflow create_community_reports completed successfully
+2025-10-17 06:05:07.0922 - INFO - graphrag.index.workflows.generate_text_embeddings - Workflow started: generate_text_embeddings
+2025-10-17 06:05:07.0922 - INFO - graphrag.index.workflows.generate_text_embeddings - Embedding the following fields: ['entity.description', 'community.full_content', 'text_unit.text']
+2025-10-17 06:05:07.0922 - INFO - graphrag.utils.storage - reading table from storage: text_units.parquet
+2025-10-17 06:05:07.0926 - INFO - graphrag.utils.storage - reading table from storage: entities.parquet
+2025-10-17 06:05:07.0927 - INFO - graphrag.utils.storage - reading table from storage: community_reports.parquet
+2025-10-17 06:05:07.0931 - INFO - graphrag.index.workflows.generate_text_embeddings - Creating embeddings
+2025-10-17 06:05:07.0931 - INFO - graphrag.index.operations.embed_text.embed_text - using vector store lancedb with container_name default for embedding entity.description: default-entity-description
+2025-10-17 06:05:07.0945 - INFO - graphrag.index.operations.embed_text.embed_text - uploading text embeddings batch 1/1 of size 500 to vector store
+2025-10-17 06:05:07.0946 - INFO - graphrag.storage.file_pipeline_storage - Creating file storage at /Users/lamnguyen/Desktop/source/graphrag-app/christmas/cache/text_embedding
+2025-10-17 06:05:07.0958 - INFO - graphrag.index.operations.embed_text.strategies.openai - embedding 154 inputs via 154 snippets using 10 batches. max_batch_size=16, batch_max_tokens=8191
+2025-10-17 06:05:08.0430 - INFO - graphrag.logger.progress - generate embeddings progress: 1/10
+2025-10-17 06:05:08.0452 - INFO - graphrag.logger.progress - generate embeddings progress: 2/10
+2025-10-17 06:05:08.0453 - INFO - graphrag.logger.progress - generate embeddings progress: 3/10
+2025-10-17 06:05:08.0454 - INFO - graphrag.logger.progress - generate embeddings progress: 4/10
+2025-10-17 06:05:08.0455 - INFO - graphrag.logger.progress - generate embeddings progress: 5/10
+2025-10-17 06:05:08.0456 - INFO - graphrag.logger.progress - generate embeddings progress: 6/10
+2025-10-17 06:05:08.0458 - INFO - graphrag.logger.progress - generate embeddings progress: 7/10
+2025-10-17 06:05:08.0459 - INFO - graphrag.logger.progress - generate embeddings progress: 8/10
+2025-10-17 06:05:08.0503 - INFO - graphrag.logger.progress - generate embeddings progress: 9/10
+2025-10-17 06:05:08.0633 - INFO - graphrag.logger.progress - generate embeddings progress: 10/10
+2025-10-17 06:05:08.0756 - INFO - graphrag.index.operations.embed_text.embed_text - using vector store lancedb with container_name default for embedding community.full_content: default-community-full_content
+2025-10-17 06:05:08.0756 - INFO - graphrag.index.operations.embed_text.embed_text - uploading text embeddings batch 1/1 of size 500 to vector store
+2025-10-17 06:05:08.0767 - INFO - graphrag.index.operations.embed_text.strategies.openai - embedding 24 inputs via 24 snippets using 2 batches. max_batch_size=16, batch_max_tokens=8191
+2025-10-17 06:05:09.0146 - INFO - graphrag.logger.progress - generate embeddings progress: 1/2
+2025-10-17 06:05:09.0242 - INFO - graphrag.logger.progress - generate embeddings progress: 2/2
+2025-10-17 06:05:09.0255 - INFO - graphrag.index.operations.embed_text.embed_text - using vector store lancedb with container_name default for embedding text_unit.text: default-text_unit-text
+2025-10-17 06:05:09.0256 - INFO - graphrag.index.operations.embed_text.embed_text - uploading text embeddings batch 1/1 of size 500 to vector store
+2025-10-17 06:05:09.0302 - INFO - graphrag.index.operations.embed_text.strategies.openai - embedding 42 inputs via 42 snippets using 7 batches. max_batch_size=16, batch_max_tokens=8191
+2025-10-17 06:05:09.0543 - INFO - graphrag.logger.progress - generate embeddings progress: 1/7
+2025-10-17 06:05:09.0667 - INFO - graphrag.logger.progress - generate embeddings progress: 2/7
+2025-10-17 06:05:09.0685 - INFO - graphrag.logger.progress - generate embeddings progress: 3/7
+2025-10-17 06:05:09.0702 - INFO - graphrag.logger.progress - generate embeddings progress: 4/7
+2025-10-17 06:05:09.0852 - INFO - graphrag.logger.progress - generate embeddings progress: 5/7
+2025-10-17 06:05:11.0607 - INFO - graphrag.logger.progress - generate embeddings progress: 6/7
+2025-10-17 06:05:11.0897 - INFO - graphrag.logger.progress - generate embeddings progress: 7/7
+2025-10-17 06:05:11.0918 - INFO - graphrag.index.workflows.generate_text_embeddings - Workflow completed: generate_text_embeddings
+2025-10-17 06:05:11.0918 - INFO - graphrag.api.index - Workflow generate_text_embeddings completed successfully
+2025-10-17 06:05:11.0951 - INFO - graphrag.index.run.run_pipeline - Indexing pipeline complete.
+2025-10-17 06:05:11.0954 - INFO - graphrag.cli.index - All workflows completed successfully.
