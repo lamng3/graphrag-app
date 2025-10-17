@@ -26,4 +26,7 @@ Set up workspace variables
 Run indexing pipeline
 ```uv run graphrag index --root ./christmas```
 
+#### Takeaway
+`gpt-4-turbo-preview` does not support structured outputs (json schema). Some alternative models to use are: `gpt-4o`, `gpt-4o-mini`, `gpt-4-turbo`
+
 #### Using the Query Engine
