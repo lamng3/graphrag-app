@@ -17,7 +17,13 @@ What `uv add graphrag` will do:
 - Automatically creates a venv if one doesn't exist
 - Install GraphRAG and its dependencies 
 
-#### Setup GraphRAG workspace variables
+#### Running the Indexer
 Prereq: Follow [GraphRAG/Getting Started](https://microsoft.github.io/graphrag/get_started/) to set up data project.
 
-`uv run graphrag init --root ./christmas`
+Set up workspace variables
+```uv run graphrag init --root ./christmas```
+
+Run indexing pipeline
+```uv run graphrag index --root ./christmas```
+
+#### Using the Query Engine
