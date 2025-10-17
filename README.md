@@ -17,7 +17,7 @@ What `uv add graphrag` will do:
 - Automatically creates a venv if one doesn't exist
 - Install GraphRAG and its dependencies 
 
-#### Running the Indexer
+### Run the Indexer
 Prereq: Follow [GraphRAG/Getting Started](https://microsoft.github.io/graphrag/get_started/) to set up data project.
 
 Set up workspace variables
@@ -29,4 +29,24 @@ Run indexing pipeline
 #### Takeaway
 `gpt-4-turbo-preview` does not support structured outputs (json schema). Some alternative models to use are: `gpt-4o`, `gpt-4o-mini`, `gpt-4-turbo`
 
-#### Using the Query Engine
+### Use the Query Engine
+Let's ask some questions using the dataset
+
+Global search to ask a high-level question:
+```
+uv run graphrag query \
+--root ./christmas \
+--method global \
+--query "What are the top themes in this story?"
+```
+
+Local search to ask a more specific question about a particular character
+```
+uv run graphrag query \
+--root ./christmas \
+--method local \
+--query "Who is Scrooge and what are his main relationships?"
+```
+
+#### Takeaway
+[GraphRAG/Query Engine](https://microsoft.github.io/graphrag/query/overview/) contains interesting information about leveraging local and global search mechanisms
