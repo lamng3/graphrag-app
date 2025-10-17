@@ -18,4 +18,6 @@ What `uv add graphrag` will do:
 - Install GraphRAG and its dependencies 
 
 #### Setup GraphRAG workspace variables
-`uv`
+Prereq: Follow [GraphRAG/Getting Started](https://microsoft.github.io/graphrag/get_started/) to set up data project.
+
+`uv run graphrag init --root ./christmas`
